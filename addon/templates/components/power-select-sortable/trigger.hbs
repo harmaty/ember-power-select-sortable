@@ -19,14 +19,18 @@
     {{/sortable-item}}
   {{/each}}
   {{#if searchEnabled}}
-    <input type="search" class="ember-power-select-trigger-multiple-input {{elementId}}-input"
-      tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-      style={{triggerMultipleInputStyle}}
-      aria-controls={{listboxId}}
-      placeholder={{maybePlaceholder}}
-      disabled={{disabled}}
-      oninput={{action "onInput"}}
-      onkeydown={{action "handleKeydown"}}>
+    <input type="search" class="ember-power-select-trigger-multiple-input"
+           tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+           id="ember-power-select-trigger-multiple-input-{{select._id}}"
+           value={{select.searchText}}
+               aria-controls={{listboxId}}
+           style={{triggerMultipleInputStyle}}
+               placeholder={{maybePlaceholder}}
+           disabled={{select.disabled}}
+               oninput={{action "onInput"}}
+           onFocus={{activate}}
+               onBlur={{onBlur}}
+           onkeydown={{action "onKeydown"}}>
   {{/if}}
 {{/sortable-group}}
 <span class="ember-power-select-status-icon"></span>
