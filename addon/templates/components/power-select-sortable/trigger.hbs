@@ -3,7 +3,7 @@
   class="ember-power-select-multiple-options"
   onChange=(action "reorderItems")
   direction="x" as |group|}}
-  {{#each selected as |opt idx|}}
+  {{#each select.selected as |opt idx|}}
     {{#sortable-item tagName="li" class="ember-power-select-multiple-option" model=opt group=group}}
       {{#unless select.disabled}}
         <span role="button"
