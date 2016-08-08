@@ -1,20 +1,22 @@
 {{#sortable-group tagName="ul"
-  id=(concat elementId "-ember-power-select-multiple-options")
+  id=(concat "ember-power-select-multiple-options-" select._id)
   class="ember-power-select-multiple-options"
   onChange=(action "reorderItems")
   direction="x" as |group|}}
   {{#each selected as |opt idx|}}
     {{#sortable-item tagName="li" class="ember-power-select-multiple-option" model=opt group=group}}
-      {{#unless disabled}}
+      {{#unless select.disabled}}
         <span role="button"
-          aria-label="remove element"
-          class="ember-power-select-multiple-remove-btn"
-          data-selected-index={{idx}}>&times;</span>
+              aria-label="remove element"
+              class="ember-power-select-multiple-remove-btn"
+              data-selected-index={{idx}}>
+          &times;
+        </span>
       {{/unless}}
       {{#if selectedItemComponent}}
-        {{component selectedItemComponent selected=opt lastSearchedText=lastSearchedText}}
+        {{component selectedItemComponent option=(readonly opt) select=(readonly select)}}
       {{else}}
-        {{yield opt lastSearchedText}}
+        {{yield opt select}}
       {{/if}}
     {{/sortable-item}}
   {{/each}}
